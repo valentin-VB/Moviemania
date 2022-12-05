@@ -37,7 +37,12 @@ export const Heading = styled.h3`
 export const BackIcon = styled(MdArrowBackIosNew)``;
 
 export const StyledLink = styled(NavLink)`
-  color: ${p => p.theme.colors.accentText};
+  color: ${p => p.theme.colors.text};
   margin-right: ${p => p.theme.space[4]}px;
   text-decoration: none;
+  cursor: pointer;
+
+  &.active {
+    color: ${p => p.theme.colors.accentText};
+  }
 `;

@@ -1,3 +1,6 @@
+import { Box } from 'components/Reusable Components/Box';
+import { List, ListItem, Text } from 'components/Reviews/Reviews.styled';
+import { Heading } from 'pages/MovieDetails/MovieDetails.styled';
 import { useOutletContext } from 'react-router-dom';
 
 function Reviews() {
@@ -6,18 +9,22 @@ function Reviews() {
   console.log('reviews', reviews);
 
   if (reviews.length === 0) {
-    return <h1>No review for this Movie yet</h1>;
+    return (
+      <Box as="p" p="16px" color="white" fontWeight="400">
+        No review for this movie yet
+      </Box>
+    );
   }
 
   return (
-    <ul>
+    <List>
       {reviews.map(review => (
-        <li>
-          <h3>{review.author}</h3>
-          <p>{review.content}</p>
-        </li>
+        <ListItem>
+          <Heading>{review.author}</Heading>
+          <Text>{review.content}</Text>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 }
 

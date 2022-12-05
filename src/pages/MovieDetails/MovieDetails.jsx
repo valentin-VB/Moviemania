@@ -59,14 +59,14 @@ function MovieDetails() {
       video.name.toLowerCase().includes('trailer')
     );
 
-    const URL = `https://www.youtube.com/embed/${trailer.key}`;
+    const URL = `http://www.youtube.com/embed/${trailer?.key}`;
 
     console.log('URL', URL);
     return URL;
   };
 
   return (
-    <Box p="16px">
+    <Box pl="16px" pr="16px">
       {loading && <Loader></Loader>}
       <StyledNavLink to={backLinkHref}>
         <BackIcon></BackIcon>

@@ -21,8 +21,8 @@ export const MovieInfo = styled.div`
   position: absolute;
   width: 100%;
   bottom: 0;
-  color: rgba(232, 232, 232, 0.6);
+  color: rgba(240, 240, 240, 0.9);
   padding-left: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[4]}px;
-  background-color: rgba(232, 232, 232, 0.8); ;
+  background-color: rgba(240, 240, 240, 0.6); ;
 `;

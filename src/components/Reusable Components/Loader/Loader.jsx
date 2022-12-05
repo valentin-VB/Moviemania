@@ -1,11 +1,11 @@
 import { FidgetSpinner } from 'react-loader-spinner';
 import { Box } from 'components/Reusable Components/Box';
-import { LoadingText } from './Loader.styled';
+import { Text } from 'components/Reviews/Reviews.styled';
 
 const Loader = () => {
   return (
     <Box display="flex" alignItems="center" justifyContent="center">
-      <LoadingText>Loading images</LoadingText>
+      <Text>Loading . . .</Text>
       <FidgetSpinner backgroundColor="green" />
     </Box>
   );
