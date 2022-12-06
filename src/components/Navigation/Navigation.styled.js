@@ -36,19 +36,22 @@ export const StyledNavLink = styled(NavLink)`
     width: 98%;
     padding-top: ${p => p.theme.space[5]}px;
     padding-bottom: ${p => p.theme.space[5]}px;
+    color: ${p => p.theme.colors.text};
+    path {
+      stroke: ${p => p.theme.colors.text};
+    }
 
     svg {
       width: 40px;
     }
 
-    color: ${p => p.theme.colors.text};
     &.active {
       background-color: ${p => p.theme.colors.active};
       color: ${p => p.theme.colors.accentText};
       border-right: 8px solid ${p => p.theme.colors.accentText};
-      /* path {
+      path {
         stroke: ${p => p.theme.colors.accentText};
-      } */
+      }
     }
   }
 `;

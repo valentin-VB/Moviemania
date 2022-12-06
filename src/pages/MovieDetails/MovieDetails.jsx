@@ -82,7 +82,7 @@ function MovieDetails() {
   };
 
   return (
-    <Box pl="16px" pr="16px">
+    <Box pl="16px" pr="16px" pt="32px">
       {loading && <Loader></Loader>}
       <StyledNavLink to={backLinkHref}>
         <BackIcon></BackIcon>

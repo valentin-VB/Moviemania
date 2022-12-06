@@ -7,6 +7,13 @@ export const Wrapper = styled.div`
     width: 100%;
     height: calc(100vw / 1.77); /* 16:9 */
   }
+
+  @media screen and (min-width: ${p => p.theme.sizes.pc}) {
+    iframe {
+      width: 700px;
+      height: calc(700px / 1.77);
+    }
+  }
 `;
 
 export const Text = styled.p`

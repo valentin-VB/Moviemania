@@ -42,6 +42,7 @@ export const Logo = styled.h1`
   padding-left: ${p => p.theme.space[4]}px;
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
     padding-top: ${p => p.theme.space[4]}px;
+    margin-bottom: ${p => p.theme.space[7]}px;
   }
 `;
 
