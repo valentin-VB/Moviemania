@@ -34,6 +34,7 @@ function MovieDetails() {
         setLoading(false);
       } catch (error) {
         console.warn(error);
+        setMovieDetails('error');
       }
 
       try {
@@ -47,8 +48,23 @@ function MovieDetails() {
     fetchData();
   }, [movieId]);
 
-  if (movieDetails === null || config === null) {
-    return;
+  if (!movieDetails || !config) {
+    return null;
+  }
+
+  if (movieDetails === 'error') {
+    return (
+      <Box pl="16px">
+        <StyledNavLink to={backLinkHref}>
+          <BackIcon></BackIcon>
+          Back to Movies
+        </StyledNavLink>
+        <Text>
+          Ooops... The page you are looking for might have been removed or
+          temporarily unavailable
+        </Text>
+      </Box>
+    );
   }
 
   const { title, overview, genres, videos, release_date, runtime, imdb_id } =

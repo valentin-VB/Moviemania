@@ -21,9 +21,6 @@ function TrendingMovies() {
       } catch (error) {
         console.warn(error);
       }
-
-      // console.log('TrandingMovies', TrandingMovies);
-      // console.log('fetchTrendingMovies();', fetchTrendingMovies());
     };
 
     fetchData();

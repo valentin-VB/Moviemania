@@ -1,4 +1,5 @@
 import { Box } from 'components/Reusable Components/Box';
+import { IoNavigateCircleOutline } from 'react-icons/io5';
 import { useOutletContext } from 'react-router-dom';
 import { List, ListItem, Text } from './Cast.styled';
 function Cast() {
@@ -9,14 +10,14 @@ function Cast() {
     <List>
       {cast.map(actor => {
         if (!actor.profile_path) {
-          return;
+          return IoNavigateCircleOutline;
         }
         return (
           <ListItem key={actor.id}>
             <img
               ml="auto"
               mr="auto"
-              src={`${config.base_url}${config.profile_sizes[2]}${actor.profile_path}`}
+              src={`${config.base_url}${config.profile_sizes[1]}${actor.profile_path}`}
               alt=""
             />
             <Box p="6px">

@@ -1,12 +1,11 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { Wraper, ListItem, MovieInfo } from './MoviesList.styled';
-import { Box } from 'components/Reusable Components/Box';
+import { Wraper, ListItem, MovieInfo, List } from './MoviesList.styled';
 
 function MoviesList({ movies, config }) {
   const location = useLocation();
   console.log('location', location);
   return (
-    <Box as="ul" pl="16px" pr="16px">
+    <List>
       {movies.length > 0 &&
         movies.map(movie => (
           <ListItem key={movie.id}>
@@ -23,7 +22,7 @@ function MoviesList({ movies, config }) {
             </NavLink>
           </ListItem>
         ))}
-    </Box>
+    </List>
   );
 }
 

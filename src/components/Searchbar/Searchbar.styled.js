@@ -8,6 +8,10 @@ export const StyledForm = styled.form`
   padding-left: ${p => p.theme.space[4]}px;
   padding-top: ${p => p.theme.space[5]}px;
   padding-bottom: ${p => p.theme.space[4]}px;
+
+  @media screen and (min-width: ${p => p.theme.sizes.pc}) {
+    display: inline;
+  }
 `;
 
 export const Input = styled.input`
@@ -44,7 +48,6 @@ export const Btn = styled.button`
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
-  vertical-align: middle;
   :hover {
     opacity: 1;
   }

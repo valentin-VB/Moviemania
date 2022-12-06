@@ -42,4 +42,9 @@ export const theme = {
     lg: '16px',
     round: '50%',
   },
+
+  sizes: {
+    phone: '479px',
+    pc: '480px',
+  },
 };
