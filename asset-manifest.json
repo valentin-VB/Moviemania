@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/Moviemania/static/css/main.292b0fb3.css",
-    "main.js": "/Moviemania/static/js/main.b95dc80a.js",
-    "static/js/304.a1d669a4.chunk.js": "/Moviemania/static/js/304.a1d669a4.chunk.js",
-    "static/js/357.4f1fb3a6.chunk.js": "/Moviemania/static/js/357.4f1fb3a6.chunk.js",
-    "static/js/540.ca7979b6.chunk.js": "/Moviemania/static/js/540.ca7979b6.chunk.js",
+    "main.js": "/Moviemania/static/js/main.3711fddc.js",
+    "static/js/304.2330b802.chunk.js": "/Moviemania/static/js/304.2330b802.chunk.js",
+    "static/js/357.f525c419.chunk.js": "/Moviemania/static/js/357.f525c419.chunk.js",
+    "static/js/540.41ef9d06.chunk.js": "/Moviemania/static/js/540.41ef9d06.chunk.js",
     "static/js/58.a9e63873.chunk.js": "/Moviemania/static/js/58.a9e63873.chunk.js",
     "static/js/796.7ba1374a.chunk.js": "/Moviemania/static/js/796.7ba1374a.chunk.js",
     "static/js/274.b9b2cb4e.chunk.js": "/Moviemania/static/js/274.b9b2cb4e.chunk.js",
@@ -12,10 +12,10 @@
     "static/js/316.e7827c78.chunk.js": "/Moviemania/static/js/316.e7827c78.chunk.js",
     "index.html": "/Moviemania/index.html",
     "main.292b0fb3.css.map": "/Moviemania/static/css/main.292b0fb3.css.map",
-    "main.b95dc80a.js.map": "/Moviemania/static/js/main.b95dc80a.js.map",
-    "304.a1d669a4.chunk.js.map": "/Moviemania/static/js/304.a1d669a4.chunk.js.map",
-    "357.4f1fb3a6.chunk.js.map": "/Moviemania/static/js/357.4f1fb3a6.chunk.js.map",
-    "540.ca7979b6.chunk.js.map": "/Moviemania/static/js/540.ca7979b6.chunk.js.map",
+    "main.3711fddc.js.map": "/Moviemania/static/js/main.3711fddc.js.map",
+    "304.2330b802.chunk.js.map": "/Moviemania/static/js/304.2330b802.chunk.js.map",
+    "357.f525c419.chunk.js.map": "/Moviemania/static/js/357.f525c419.chunk.js.map",
+    "540.41ef9d06.chunk.js.map": "/Moviemania/static/js/540.41ef9d06.chunk.js.map",
     "58.a9e63873.chunk.js.map": "/Moviemania/static/js/58.a9e63873.chunk.js.map",
     "796.7ba1374a.chunk.js.map": "/Moviemania/static/js/796.7ba1374a.chunk.js.map",
     "274.b9b2cb4e.chunk.js.map": "/Moviemania/static/js/274.b9b2cb4e.chunk.js.map",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.292b0fb3.css",
-    "static/js/main.b95dc80a.js"
+    "static/js/main.3711fddc.js"
   ]
 }
