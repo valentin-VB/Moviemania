@@ -1,4 +1,3 @@
-import { Heading } from 'pages/MovieDetails/MovieDetails.styled';
 import { Box } from 'components/Reusable Components/Box';
 import { Wraper } from './Crew.styled';
 

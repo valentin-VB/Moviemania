@@ -6,7 +6,6 @@ import Loader from 'components/Reusable Components/Loader';
 import {
   BackIcon,
   Text,
-  Wrapper,
   Geners,
   Heading,
   StyledLink,
