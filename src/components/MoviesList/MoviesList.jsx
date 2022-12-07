@@ -1,9 +1,9 @@
+import { Box } from 'components/Reusable Components/Box';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Wraper, ListItem, MovieInfo, List } from './MoviesList.styled';
 
 function MoviesList({ movies, config }) {
   const location = useLocation();
-  console.log('location', location);
   return (
     <List>
       {movies.length > 0 &&
@@ -15,8 +15,10 @@ function MoviesList({ movies, config }) {
                   alt={movie.title}
                   src={`${config.base_url}${config.poster_sizes[3]}${movie.poster_path}`}
                 />
-                <MovieInfo style={{ position: 'absolute', zIndex: 1000 }}>
-                  <p>{movie.title}</p>
+                <MovieInfo>
+                  <Box as="p" pl="10px" pr="10px">
+                    {movie.title}
+                  </Box>
                 </MovieInfo>
               </Wraper>
             </NavLink>

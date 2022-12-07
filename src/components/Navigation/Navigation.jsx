@@ -1,10 +1,10 @@
 import { Box } from 'components/Reusable Components/Box';
-import { HomeIcon, FilmIcon, Wraper } from './Navigation.styled';
+import { HomeIcon, FilmIcon } from './Navigation.styled';
 import { StyledNavLink } from './Navigation.styled';
 
 function Navigation({ closeMenu }) {
   return (
-    <Wraper>
+    <nav>
       <StyledNavLink
         onClick={() => {
           if (closeMenu) closeMenu();
@@ -28,7 +28,7 @@ function Navigation({ closeMenu }) {
 
         <FilmIcon></FilmIcon>
       </StyledNavLink>
-    </Wraper>
+    </nav>
   );
 }
 

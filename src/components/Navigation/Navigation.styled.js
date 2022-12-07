@@ -4,6 +4,7 @@ import { GrHomeRounded } from 'react-icons/gr';
 import { IoFilmOutline } from 'react-icons/io5';
 
 export const Wraper = styled.nav`
+  display: none;
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
     margin-bottom: ${p => p.theme.space[5]}px;
   }
@@ -36,6 +37,7 @@ export const StyledNavLink = styled(NavLink)`
     width: 98%;
     padding-top: ${p => p.theme.space[5]}px;
     padding-bottom: ${p => p.theme.space[5]}px;
+    margin-bottom: 0px;
     color: ${p => p.theme.colors.text};
     path {
       stroke: ${p => p.theme.colors.text};
@@ -43,6 +45,14 @@ export const StyledNavLink = styled(NavLink)`
 
     svg {
       width: 40px;
+    }
+
+    :hover,
+    :focus {
+      color: ${p => p.theme.colors.accentText};
+      path {
+        stroke: ${p => p.theme.colors.accentText};
+      }
     }
 
     &.active {

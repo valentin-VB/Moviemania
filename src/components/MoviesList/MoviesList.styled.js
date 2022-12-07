@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  padding-left: ${p => p.theme.space[4]}px;
-  padding-right: ${p => p.theme.space[4]}px;
   margin-top: ${p => p.theme.space[5]}px;
 
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
@@ -45,7 +43,5 @@ export const MovieInfo = styled.div`
   width: 100%;
   bottom: 0;
   color: rgba(240, 240, 240, 0.9);
-  padding-left: ${p => p.theme.space[4]}px;
-  padding-right: ${p => p.theme.space[4]}px;
   background-color: rgba(240, 240, 240, 0.6); ;
 `;

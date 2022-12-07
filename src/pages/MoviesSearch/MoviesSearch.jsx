@@ -10,7 +10,9 @@ function MoviesSearch() {
   const [loading, setLoading] = useState(false);
   const [config, setConfig] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  console.log('searchParams', searchParams);
   const searchQuery = searchParams.get('query') ?? '';
+  console.log('searchQuery', searchQuery);
 
   useEffect(() => {
     if (searchQuery === '') {

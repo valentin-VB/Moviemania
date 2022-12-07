@@ -1,16 +1,14 @@
 import { Box } from 'components/Reusable Components/Box';
-import { IoNavigateCircleOutline } from 'react-icons/io5';
 import { useOutletContext } from 'react-router-dom';
 import { List, ListItem, Text } from './Cast.styled';
 function Cast() {
   const [movieDetails, config] = useOutletContext();
   const cast = movieDetails.credits.cast;
-  console.log('cast', cast);
   return (
     <List>
       {cast.map(actor => {
         if (!actor.profile_path) {
-          return IoNavigateCircleOutline;
+          return null;
         }
         return (
           <ListItem key={actor.id}>

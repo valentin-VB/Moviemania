@@ -2,17 +2,19 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { MdArrowBackIosNew } from 'react-icons/md';
 
-export const Wrapper = styled.div`
-  iframe {
-    width: 100%;
-    height: calc(100vw / 1.77); /* 16:9 */
-  }
+export const BackLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: ${p => p.theme.space[5]}px;
+  color: ${p => p.theme.colors.accentText};
 
-  @media screen and (min-width: ${p => p.theme.sizes.pc}) {
-    iframe {
-      width: 700px;
-      height: calc(700px / 1.77);
-    }
+  :hover {
+    font-size: 28px;
+  }
+  &.active {
+    background-color: ${p => p.theme.colors.active};
+    color: ${p => p.theme.colors.accentText};
   }
 `;
 
@@ -32,11 +34,14 @@ export const Geners = styled.div`
     border: 2px solid ${p => p.theme.colors.text};
     border-radius: ${p => p.theme.radii.md};
     padding: ${p => p.theme.space[2]}px ${p => p.theme.space[4]}px;
-    margin-right: ${p => p.theme.space[4]}px;
+    :not(:last-child) {
+      margin-right: ${p => p.theme.space[4]}px;
+    }
   }
 `;
 
 export const Heading = styled.h3`
+  font-weight: ${p => p.theme.fontWeights.normal};
   color: ${p => p.theme.colors.white};
   margin-bottom: ${p => p.theme.space[4]}px;
 `;
@@ -48,8 +53,22 @@ export const StyledLink = styled(NavLink)`
   margin-right: ${p => p.theme.space[4]}px;
   text-decoration: none;
   cursor: pointer;
+  :hover,
+  :focus {
+    color: ${p => p.theme.colors.accentText};
+    font-size: 23px;
+  }
 
   &.active {
     color: ${p => p.theme.colors.accentText};
+    font-size: 23px;
+  }
+`;
+
+export const ListItem = styled.li`
+  border-top: 1px solid ${p => p.theme.colors.text};
+
+  :last-child {
+    border-bottom: 1px solid ${p => p.theme.colors.text};
   }
 `;

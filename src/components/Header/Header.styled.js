@@ -6,13 +6,24 @@ export const PageHeader = styled.header`
   position: relative;
   justify-content: space-between;
   align-items: center;
-  padding-top: ${p => p.theme.space[4]}px;
-  padding-bottom: ${p => p.theme.space[4]}px;
-  margin-bottom: ${p => p.theme.space[5]}px;
+  padding-top: ${p => p.theme.space[5]}px;
+  padding-bottom: ${p => p.theme.space[5]}px;
   background-color: ${p => p.theme.colors.secondary};
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
     display: block;
-    height: 100%;
+    height: ${() => console.log(document.body.offsetHeight)};
+  }
+`;
+
+export const Logo = styled.a`
+  display: block;
+  font-family: ${p => p.theme.fonts.heading};
+  font-size: ${p => p.theme.fontSizes.l};
+  color: ${p => p.theme.colors.accentText};
+  padding-left: ${p => p.theme.space[4]}px;
+  cursor: pointer;
+  @media screen and (min-width: ${p => p.theme.sizes.pc}) {
+    margin-bottom: ${p => p.theme.space[6]}px;
   }
 `;
 
@@ -26,23 +37,18 @@ export const MobileMenu = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: ${p => p.theme.colors.secondary};
-    padding-left: 40px;
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-left: ${p => p.theme.space[4]}px;
+    padding-top: ${p => p.theme.space[5]}px;
     font-size: 40px;
     font-weight: 500;
     z-index: 100000;
   }
 `;
 
-export const Logo = styled.h1`
-  font-family: ${p => p.theme.fonts.heading};
-  font-size: ${p => p.theme.fontSizes.l};
-  color: ${p => p.theme.colors.accentText};
-  padding-left: ${p => p.theme.space[4]}px;
+export const Wraper = styled.div`
+  display: none;
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
-    padding-top: ${p => p.theme.space[4]}px;
-    margin-bottom: ${p => p.theme.space[7]}px;
+    display: block;
   }
 `;
 
@@ -52,12 +58,5 @@ export const MenuIcon = styled(GiHamburgerMenu)`
     display: block;
     fill: ${p => p.theme.colors.accentText};
     padding-right: ${p => p.theme.space[3]}px;
-  }
-`;
-
-export const Wraper = styled.div`
-  display: none;
-  @media screen and (min-width: ${p => p.theme.sizes.pc}) {
-    display: block;
   }
 `;

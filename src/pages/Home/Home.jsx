@@ -6,8 +6,8 @@ import MoviesSearch from 'pages/MoviesSearch/MoviesSearch';
 
 function Home() {
   return (
-    <div>
-      <Box display="flex" justifyContent="space-around" pt="20px" pb="20px">
+    <>
+      <Box display="flex" justifyContent="space-around">
         <MoviesCategories to="trending">Trending</MoviesCategories>
         <MoviesCategories to="upcoming">Upcoming</MoviesCategories>
         <MoviesCategories to="top_rated">Top Rated</MoviesCategories>
@@ -16,7 +16,7 @@ function Home() {
       <Suspense>
         <Outlet></Outlet>
       </Suspense>
-    </div>
+    </>
   );
 }
 

@@ -3,7 +3,6 @@ import { fetchConfig, fetchMovieDetails } from 'Services/api';
 import { useState, useEffect } from 'react';
 import { Box } from 'components/Reusable Components/Box';
 import Loader from 'components/Reusable Components/Loader';
-import { StyledNavLink } from 'components/StyledNavLink/StyledNavLink';
 import {
   BackIcon,
   Text,
@@ -11,8 +10,12 @@ import {
   Geners,
   Heading,
   StyledLink,
+  BackLink,
+  ListItem,
 } from './MovieDetails.styled';
 import { toHoursAndMinutes } from 'Services/timeFormater';
+import Crew from 'components/Crew';
+import Trailer from 'components/Trailer';
 
 function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
@@ -22,7 +25,7 @@ function MovieDetails() {
   const { movieId } = useParams();
 
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/trending';
+  const backLinkHref = location.state?.from ?? '/home/trending';
 
   useEffect(() => {
     setLoading(true);
@@ -55,10 +58,10 @@ function MovieDetails() {
   if (movieDetails === 'error') {
     return (
       <Box pl="16px">
-        <StyledNavLink to={backLinkHref}>
+        <BackLink to={backLinkHref}>
           <BackIcon></BackIcon>
           Back to Movies
-        </StyledNavLink>
+        </BackLink>
         <Text>
           Ooops... The page you are looking for might have been removed or
           temporarily unavailable
@@ -67,56 +70,65 @@ function MovieDetails() {
     );
   }
 
-  const { title, overview, genres, videos, release_date, runtime, imdb_id } =
-    movieDetails;
-
-  const findTrailer = () => {
-    const trailer = videos.results.find(video =>
-      video.name.toLowerCase().includes('trailer')
-    );
-
-    const URL = `http://www.youtube.com/embed/${trailer?.key}`;
-
-    console.log('URL', URL);
-    return URL;
-  };
+  const {
+    title,
+    overview,
+    genres,
+    videos,
+    release_date,
+    runtime,
+    imdb_id,
+    credits,
+  } = movieDetails;
 
   return (
-    <Box pl="16px" pr="16px" pt="32px">
+    <>
       {loading && <Loader></Loader>}
-      <StyledNavLink to={backLinkHref}>
+      <BackLink to={backLinkHref}>
         <BackIcon></BackIcon>
         Back to Movies
-      </StyledNavLink>
-      <Box>
-        <Wrapper>
-          <iframe
-            title={title}
-            id="ytplayer"
-            src={findTrailer()}
-            frameBorder="0"
-            allowFullScreen
-            allow="autoplay; encrypted-media"
-          ></iframe>
-        </Wrapper>
-        <Text>
-          {`${title} • ${release_date.slice(0, 4)} • ${toHoursAndMinutes(
-            runtime
-          )}`}{' '}
-          •<a href={`https://www.imdb.com/title/${imdb_id}/`}> IMDb</a>
-        </Text>
-        <Geners>
-          {genres.map(genr => (
-            <span>{genr.name}</span>
-          ))}
-        </Geners>
-        <Heading>Overview</Heading>
-        <Text>{overview}</Text>
+      </BackLink>
+      <Trailer videos={videos.results} title={title}></Trailer>
+      <Text>
+        {`${title} • ${release_date.slice(0, 4)} • ${toHoursAndMinutes(
+          runtime
+        )}`}{' '}
+        •<a href={`https://www.imdb.com/title/${imdb_id}/`}> IMDb</a>
+      </Text>
+      <Geners>
+        {genres.map(genr => (
+          <span key={genr.id}>{genr.name}</span>
+        ))}
+      </Geners>
+      <Heading>Overview</Heading>
+      <Text>{overview}</Text>
+      <Box as="ul" mb="16px">
+        <ListItem>
+          <Crew
+            crew={credits.crew}
+            position="Directing"
+            positionName="Director"
+          ></Crew>
+        </ListItem>
+        <ListItem>
+          <Crew
+            crew={credits.crew}
+            position="Writing"
+            positionName="Writer"
+          ></Crew>
+        </ListItem>
+        <ListItem>
+          <Crew
+            crew={credits.crew}
+            position="Sound"
+            positionName="Music by"
+          ></Crew>
+        </ListItem>
       </Box>
       <StyledLink to="cast">Cast</StyledLink>
       <StyledLink to="reviews">Reviews</StyledLink>
       <Outlet context={[movieDetails, config]} />
-    </Box>
+    </>
   );
 }
 
