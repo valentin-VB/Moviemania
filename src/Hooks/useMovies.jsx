@@ -33,7 +33,7 @@ const useMovies = (page = 1, fetchMovies, searchQuery) => {
         setError(error);
       } finally {
         setIsLoading(false);
-        setIsFetched(false);
+        // setIsFetched(false);
       }
     };
 
