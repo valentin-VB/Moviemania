@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { MdArrowBackIosNew } from 'react-icons/md';
 
 export const BackLink = styled(NavLink)`
   display: flex;
@@ -46,7 +45,37 @@ export const Heading = styled.h3`
   margin-bottom: ${p => p.theme.space[4]}px;
 `;
 
-export const BackIcon = styled(MdArrowBackIosNew)``;
+export const Button = styled.button`
+  background-color: #191919;
+  border: none;
+  cursor: pointer;
+
+  &.active {
+    svg {
+      fill: ${p => p.theme.colors.accentText};
+      scale: 1.07;
+    }
+  }
+
+  svg {
+    fill: ${p => p.theme.colors.text};
+    width: 38px;
+    height: auto;
+    :hover,
+    :focus {
+      fill: ${p => p.theme.colors.accentText};
+      scale: 1.07;
+    }
+  }
+`;
+
+export const ListItem = styled.li`
+  border-top: 1px solid ${p => p.theme.colors.text};
+
+  :last-child {
+    border-bottom: 1px solid ${p => p.theme.colors.text};
+  }
+`;
 
 export const StyledLink = styled(NavLink)`
   color: ${p => p.theme.colors.text};
@@ -62,13 +91,5 @@ export const StyledLink = styled(NavLink)`
   &.active {
     color: ${p => p.theme.colors.accentText};
     font-size: 23px;
-  }
-`;
-
-export const ListItem = styled.li`
-  border-top: 1px solid ${p => p.theme.colors.text};
-
-  :last-child {
-    border-bottom: 1px solid ${p => p.theme.colors.text};
   }
 `;

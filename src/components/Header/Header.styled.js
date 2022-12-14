@@ -11,7 +11,6 @@ export const PageHeader = styled.header`
   background-color: ${p => p.theme.colors.secondary};
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
     display: block;
-    height: ${() => console.log(document.body.offsetHeight)};
   }
 `;
 

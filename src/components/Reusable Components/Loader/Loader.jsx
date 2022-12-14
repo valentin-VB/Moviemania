@@ -1,12 +1,15 @@
-import { FidgetSpinner } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 import { Box } from 'components/Reusable Components/Box';
-import { Text } from 'components/Reviews/Reviews.styled';
 
 const Loader = () => {
   return (
-    <Box display="flex" alignItems="center" justifyContent="center">
-      <Text>Loading . . .</Text>
-      <FidgetSpinner backgroundColor="green" />
+    <Box pt="32px" display="flex" justifyContent="center">
+      <Oval
+        color="#3DD2CC"
+        secondaryColor="#rgba(61, 210, 204, 0.4)"
+        width={150}
+        height={150}
+      />
     </Box>
   );
 };

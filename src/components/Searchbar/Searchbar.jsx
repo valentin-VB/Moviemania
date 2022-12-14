@@ -13,11 +13,10 @@ const Searchbar = ({ onSubmit }) => {
 
     onSubmit(data.searchQuery);
     reset();
-    return;
   };
 
   return (
-    <Box textAlign="center" mt="32px">
+    <Box textAlign="center" mt="32px" pl="32px" pr="32px">
       <StyledForm
         onSubmit={handleSubmit(data => {
           handleSearchSubmit(data);

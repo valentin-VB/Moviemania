@@ -4,23 +4,28 @@ import { useState, useEffect } from 'react';
 import { Box } from 'components/Reusable Components/Box';
 import Loader from 'components/Reusable Components/Loader';
 import {
-  BackIcon,
   Text,
   Geners,
   Heading,
   StyledLink,
   BackLink,
-  ListItem,
+  Button,
 } from './MovieDetails.styled';
 import { toHoursAndMinutes } from 'Services/timeFormater';
 import Crew from 'components/Crew';
 import Trailer from 'components/Trailer';
+import { MdArrowBackIosNew } from 'react-icons/md';
+import { BsBookmarkFill } from 'react-icons/bs';
+import { LocalStorageManager } from 'Services/localStorage';
+
+const localStorageManager = new LocalStorageManager();
 
 function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
   console.log('movieDetails', movieDetails);
   const [loading, setLoading] = useState(false);
   const [config, setConfig] = useState(null);
+  const [isActive, setisActive] = useState(null);
   const { movieId } = useParams();
 
   const location = useLocation();
@@ -34,6 +39,7 @@ function MovieDetails() {
         const movieDetails = await fetchMovieDetails(movieId);
         setMovieDetails(movieDetails);
         setLoading(false);
+        setisActive(localStorageManager.isAddedToWatchList(movieDetails.id));
       } catch (error) {
         console.warn(error);
         setMovieDetails('error');
@@ -58,7 +64,7 @@ function MovieDetails() {
     return (
       <Box pl="16px">
         <BackLink to={backLinkHref}>
-          <BackIcon></BackIcon>
+          <MdArrowBackIosNew></MdArrowBackIosNew>
           Back to Movies
         </BackLink>
         <Text>
@@ -78,22 +84,39 @@ function MovieDetails() {
     runtime,
     imdb_id,
     credits,
+    id,
   } = movieDetails;
 
   return (
     <>
       {loading && <Loader></Loader>}
       <BackLink to={backLinkHref}>
-        <BackIcon></BackIcon>
+        <MdArrowBackIosNew></MdArrowBackIosNew>
         Back to Movies
       </BackLink>
       <Trailer videos={videos.results} title={title}></Trailer>
-      <Text>
-        {`${title} • ${release_date.slice(0, 4)} • ${toHoursAndMinutes(
-          runtime
-        )}`}{' '}
-        •<a href={`https://www.imdb.com/title/${imdb_id}/`}> IMDb</a>
-      </Text>
+      <Box display="flex" justifyContent="space-between">
+        <Box
+          display="inline-grid"
+          gridGap="6px"
+          gridTemplateColumns="auto auto auto auto"
+          width="max-content"
+        >
+          <Text>{title} •</Text>
+          <Text>{release_date.slice(0, 4)} •</Text>
+          <Text>{toHoursAndMinutes(runtime)} •</Text>
+          <a href={`https://www.imdb.com/title/${imdb_id}/`}>IMDb</a>
+        </Box>
+        <Button
+          className={isActive}
+          onClick={() => {
+            localStorageManager.toogleMovies(id);
+            setisActive(localStorageManager.isAddedToWatchList(id));
+          }}
+        >
+          <BsBookmarkFill />
+        </Button>
+      </Box>
       <Geners>
         {genres.map(genr => (
           <span key={genr.id}>{genr.name}</span>
@@ -101,29 +124,7 @@ function MovieDetails() {
       </Geners>
       <Heading>Overview</Heading>
       <Text>{overview}</Text>
-      <Box as="ul" mb="16px">
-        <ListItem>
-          <Crew
-            crew={credits.crew}
-            position="Directing"
-            positionName="Director"
-          ></Crew>
-        </ListItem>
-        <ListItem>
-          <Crew
-            crew={credits.crew}
-            position="Writing"
-            positionName="Writer"
-          ></Crew>
-        </ListItem>
-        <ListItem>
-          <Crew
-            crew={credits.crew}
-            position="Sound"
-            positionName="Music by"
-          ></Crew>
-        </ListItem>
-      </Box>
+      <Crew credits={credits}></Crew>
       <StyledLink to="cast">Cast</StyledLink>
       <StyledLink to="reviews">Reviews</StyledLink>
       <Outlet context={[movieDetails, config]} />

@@ -1,59 +1,104 @@
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useState, useRef, useCallback } from 'react';
 import Searchbar from 'components/Searchbar';
-import { useState, useEffect } from 'react';
-import { fetchMovieByQuery, fetchConfig } from 'Services/api';
-import { useSearchParams } from 'react-router-dom';
+import { fetchMovieByQuery } from 'Services/api';
 import Loader from 'components/Reusable Components/Loader';
-import FoundMovies from 'components/FoundMovies/FoundMovies';
+import useMovies from 'Hooks/useMovies';
+import { List } from 'components/MovieCard/MovieCard.styled';
+import MovieCard from 'components/MovieCard';
+import { Box } from 'components/Reusable Components/Box';
+import BackToTopLink from 'components/Reusable Components/BackToTopLink';
+import { intObserverManager } from 'Services/infiniteScroll';
 
 function MoviesSearch() {
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [config, setConfig] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log('searchParams', searchParams);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const [page, setPage] = useState(1);
   const searchQuery = searchParams.get('query') ?? '';
-  console.log('searchQuery', searchQuery);
 
-  useEffect(() => {
-    if (searchQuery === '') {
-      return;
-    }
-
-    setLoading(true);
-    const fetchData = async () => {
-      try {
-        const result = await fetchMovieByQuery(searchQuery);
-        const config = await fetchConfig();
-        setConfig(config);
-        setMovies(result);
-        setLoading(false);
-      } catch (error) {
-        console.warn(error);
-      }
-    };
-
-    fetchData();
-  }, [searchQuery]);
+  const {
+    isLoading,
+    results,
+    hasNextPage,
+    error,
+    config,
+    isFetched,
+    handleSearchbarSubmit,
+  } = useMovies(page, fetchMovieByQuery, searchQuery);
 
   const handleFormSubmit = query => {
-    setSearchParams({ query: query });
-    setMovies([]);
+    navigate({
+      pathname: '/movies',
+      search: `?query=${query}`,
+    });
+    handleSearchbarSubmit();
+    setPage(1);
   };
+
+  const addPage = () => {
+    setPage(prev => prev + 1);
+  };
+  const intObserver = useRef();
+  const firstElRef = useRef();
+
+  const lastMovieRef = useCallback(
+    movieCard => {
+      const params = {
+        movieCard,
+        hasNextPage,
+        isLoading,
+        addPage,
+        intObserver,
+      };
+      intObserverManager(params);
+    },
+    [isLoading, hasNextPage]
+  );
+
+  const content = results.map((movie, i) => {
+    if (results.length === i + 1) {
+      return (
+        <MovieCard
+          ref={lastMovieRef}
+          key={movie.id}
+          movie={movie}
+          config={config}
+        ></MovieCard>
+      );
+    }
+    if (i === 1) {
+      return (
+        <MovieCard
+          ref={firstElRef}
+          key={movie.id}
+          movie={movie}
+          config={config}
+        ></MovieCard>
+      );
+    }
+    return <MovieCard key={movie.id} movie={movie} config={config}></MovieCard>;
+  });
 
   return (
     <>
       <Searchbar onSubmit={handleFormSubmit}></Searchbar>
-      {loading ? (
-        <Loader></Loader>
-      ) : (
-        searchQuery !== '' && (
-          <FoundMovies
-            query={searchQuery}
-            movies={movies}
-            config={config}
-          ></FoundMovies>
-        )
+      {error && (
+        <Box p="16px" color="white">
+          Whoops, something went wrong: {error.message}
+        </Box>
       )}
+      {results.length > 0 && (
+        <>
+          <List>{content}</List>
+          <BackToTopLink firstElRef={firstElRef}></BackToTopLink>
+        </>
+      )}
+      {isFetched && !isLoading && results.length === 0 && (
+        <Box p="16px" color="white">
+          Sorry, no movie found for this search query :(
+        </Box>
+      )}
+      {isLoading && <Loader></Loader>}
     </>
   );
 }

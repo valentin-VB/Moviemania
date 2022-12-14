@@ -40,8 +40,24 @@ export const Wraper = styled.div`
 
 export const MovieInfo = styled.div`
   position: absolute;
-  width: 100%;
-  bottom: 0;
-  color: rgba(240, 240, 240, 0.9);
-  background-color: rgba(240, 240, 240, 0.6); ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: 22px;
+  background-color: rgba(232, 232, 232, 0.15);
+  backdrop-filter: blur(2.5px);
+  border-radius: 0px 0px 0px 50px;
+  width: 30%;
+  height: 10%;
+  right: 0;
+  top: 0;
+  color: ${p => p.theme.colors.white};
+
+  svg {
+    width: 20px;
+    fill: gold;
+    margin-right: ${p => p.theme.space[3]}px;
+  }
 `;

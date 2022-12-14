@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { GrHomeRounded } from 'react-icons/gr';
-import { IoFilmOutline } from 'react-icons/io5';
 
 export const Wraper = styled.nav`
   display: none;
@@ -10,24 +8,17 @@ export const Wraper = styled.nav`
   }
 `;
 
-export const HomeIcon = styled(GrHomeRounded)`
-  margin-left: ${p => p.theme.space[4]}px;
-
-  path {
-    stroke: ${p => p.theme.colors.text};
-  }
-`;
-
-export const FilmIcon = styled(IoFilmOutline)`
-  margin-left: ${p => p.theme.space[4]}px;
-`;
-
 export const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
   margin-bottom: ${p => p.theme.space[5]}px;
   color: ${p => p.theme.colors.accentText};
+
+  span {
+    margin-right: ${p => p.theme.space[4]}px;
+  }
+
   path {
     stroke: ${p => p.theme.colors.accentText};
   }
@@ -39,6 +30,7 @@ export const StyledNavLink = styled(NavLink)`
     padding-bottom: ${p => p.theme.space[5]}px;
     margin-bottom: 0px;
     color: ${p => p.theme.colors.text};
+
     path {
       stroke: ${p => p.theme.colors.text};
     }
@@ -56,7 +48,7 @@ export const StyledNavLink = styled(NavLink)`
     }
 
     &.active {
-      background-color: ${p => p.theme.colors.active};
+      background-color: ${p => p.theme.colors.accent};
       color: ${p => p.theme.colors.accentText};
       border-right: 8px solid ${p => p.theme.colors.accentText};
       path {

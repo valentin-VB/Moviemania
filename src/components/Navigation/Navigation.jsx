@@ -1,5 +1,8 @@
 import { Box } from 'components/Reusable Components/Box';
-import { HomeIcon, FilmIcon } from './Navigation.styled';
+import { GrHomeRounded } from 'react-icons/gr';
+import { IoFilmOutline } from 'react-icons/io5';
+import { BsBookmarkFill } from 'react-icons/bs';
+
 import { StyledNavLink } from './Navigation.styled';
 
 function Navigation({ closeMenu }) {
@@ -14,7 +17,7 @@ function Navigation({ closeMenu }) {
         <Box as="span" pl="16px">
           Home
         </Box>
-        <HomeIcon className="icon"></HomeIcon>
+        <GrHomeRounded />
       </StyledNavLink>
       <StyledNavLink
         onClick={() => {
@@ -26,7 +29,19 @@ function Navigation({ closeMenu }) {
           Movies
         </Box>
 
-        <FilmIcon></FilmIcon>
+        <IoFilmOutline />
+      </StyledNavLink>
+      <StyledNavLink
+        onClick={() => {
+          if (closeMenu) closeMenu();
+        }}
+        to="/watchlist"
+      >
+        <Box as="span" pl="16px">
+          Watchlist
+        </Box>
+
+        <BsBookmarkFill />
       </StyledNavLink>
     </nav>
   );

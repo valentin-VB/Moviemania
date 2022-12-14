@@ -1,40 +1,82 @@
-import { fetchConfig, fetchUpcomingMovies } from '../../Services/api';
-import { useEffect, useState } from 'react';
+import useMovies from 'Hooks/useMovies';
+import MovieCard from 'components/MovieCard';
+import { useState, useRef, useCallback } from 'react';
 import Loader from 'components/Reusable Components/Loader';
-import MoviesList from 'components/MoviesList';
+import { fetchUpcomingMovies } from 'Services/api';
+import { List } from 'components/MovieCard/MovieCard.styled';
+import BackToTopLink from 'components/Reusable Components/BackToTopLink';
+import { Box } from 'components/Reusable Components/Box';
+import { intObserverManager } from 'Services/infiniteScroll';
 
-function UpcomingMovies() {
-  const [movies, setMovies] = useState([]);
-  const [config, setConfig] = useState(null);
-  console.log('movies', movies);
-  const [loading, setLoading] = useState(false);
+const UpcomingMovies = () => {
+  const [page, setPage] = useState(1);
+  const { isLoading, results, hasNextPage, error, config } = useMovies(
+    page,
+    fetchUpcomingMovies
+  );
 
-  useEffect(() => {
-    setLoading(true);
+  const addPage = () => {
+    setPage(prev => prev + 1);
+  };
+  const intObserver = useRef();
+  const firstElRef = useRef();
 
-    const fetchData = async () => {
-      try {
-        const trendingMovies = await fetchUpcomingMovies();
-        const config = await fetchConfig();
-        setConfig(config);
-        setMovies(trendingMovies);
-        setLoading(false);
-      } catch (error) {
-        console.warn(error);
-      }
+  const lastMovieRef = useCallback(
+    movieCard => {
+      const params = {
+        movieCard,
+        hasNextPage,
+        isLoading,
+        addPage,
+        intObserver,
+      };
+      intObserverManager(params);
+    },
+    [isLoading, hasNextPage]
+  );
 
-      // console.log('TrandingMovies', TrandingMovies);
-      // console.log('fetchTrendingMovies();', fetchTrendingMovies());
-    };
+  const content = results.map((movie, i) => {
+    if (results.length === i + 1) {
+      return (
+        <MovieCard
+          ref={lastMovieRef}
+          key={movie.id}
+          movie={movie}
+          config={config}
+        ></MovieCard>
+      );
+    }
 
-    fetchData();
-  }, []);
+    if (i === 1) {
+      return (
+        <MovieCard
+          ref={firstElRef}
+          key={movie.id}
+          movie={movie}
+          config={config}
+        ></MovieCard>
+      );
+    }
+    return <MovieCard key={movie.id} movie={movie} config={config}></MovieCard>;
+  });
 
   return (
     <>
-      {loading && <Loader></Loader>}
-      <MoviesList movies={movies} config={config}></MoviesList>
+      {error && (
+        <Box p="16px" color="white">
+          Whoops, something went wrong: {error.message}
+        </Box>
+      )}
+      {results.length > 0 && (
+        <>
+          <List>{content}</List>
+          <BackToTopLink firstElRef={firstElRef}></BackToTopLink>
+        </>
+      )}
+
+      {isLoading && <Loader></Loader>}
     </>
   );
-}
+};
+
 export default UpcomingMovies;

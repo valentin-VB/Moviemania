@@ -3,6 +3,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
 import Layout from 'components/Layout';
+import { WatchList } from 'pages/WatchList/WatchList';
+import { Text } from 'pages/MovieDetails/MovieDetails.styled';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const MoviesSearch = lazy(() => import('../pages/MoviesSearch/MoviesSearch'));
@@ -13,22 +15,25 @@ const TopRatedMovies = lazy(() => import('../components/TopRatedMovies'));
 
 export const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Navigate to="/home"></Navigate>} />
-        <Route path="home" element={<Home />}>
-          <Route index element={<Navigate to="trending" />}></Route>
-          <Route path="trending" element={<TrendingMovies />}></Route>
-          <Route path="upcoming" element={<UpcomingMovies />}></Route>
-          <Route path="top_rated" element={<TopRatedMovies />}></Route>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/home"></Navigate>} />
+          <Route path="home" element={<Home />}>
+            <Route index element={<Navigate to="trending" />}></Route>
+            <Route path="trending" element={<TrendingMovies />}></Route>
+            <Route path="upcoming" element={<UpcomingMovies />}></Route>
+            <Route path="top_rated" element={<TopRatedMovies />}></Route>
+          </Route>
+          <Route path="movies" element={<MoviesSearch />}></Route>
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />}></Route>
+            <Route path="reviews" element={<Reviews />}></Route>
+          </Route>
+          <Route path="watchlist" element={<WatchList />}></Route>
+          <Route path="*" element={<Text>Not Found</Text>} />
         </Route>
-        <Route path="movies" element={<MoviesSearch />}></Route>
-        <Route path="movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />}></Route>
-          <Route path="reviews" element={<Reviews />}></Route>
-        </Route>
-        <Route path="*" element={<div>Not Found</div>} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 };

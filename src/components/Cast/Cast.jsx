@@ -15,7 +15,7 @@ function Cast() {
             <img
               ml="auto"
               mr="auto"
-              src={`${config.base_url}${config.profile_sizes[1]}${actor.profile_path}`}
+              src={`${config.base_url}${config.profile_sizes[2]}${actor.profile_path}`}
               alt=""
             />
             <Box p="6px">
