@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmoviemania=self.webpackChunkmoviemania||[]).push([[856],{6856:function(t,a,n){n.d(a,{lrP:function(){return i}});var e=n(9983);function i(t){return(0,e.w_)({tag:"svg",attr:{viewBox:"0 0 24 24"},child:[{tag:"path",attr:{fill:"none",d:"M0 0h24v24H0z"}},{tag:"path",attr:{d:"M17.77 3.77L16 2 6 12l10 10 1.77-1.77L9.54 12z"}}]})(t)}}}]);
+//# sourceMappingURL=856.51f368cc.chunk.js.map
