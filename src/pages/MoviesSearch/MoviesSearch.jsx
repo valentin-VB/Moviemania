@@ -1,4 +1,4 @@
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, useLocaion } from 'react-router-dom';
 import { useState, useRef, useCallback } from 'react';
 import Searchbar from 'components/Searchbar';
 import { fetchMovieByQuery } from 'Services/api';
@@ -12,26 +12,21 @@ import { intObserverManager } from 'Services/infiniteScroll';
 
 function MoviesSearch() {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
   const searchQuery = searchParams.get('query') ?? '';
 
-  const {
-    isLoading,
-    results,
-    hasNextPage,
-    error,
-    config,
-    isFetched,
-    handleSearchbarSubmit,
-  } = useMovies(page, fetchMovieByQuery, searchQuery);
+  const { isLoading, results, hasNextPage, error, config } = useMovies(
+    page,
+    fetchMovieByQuery,
+    searchQuery
+  );
 
   const handleFormSubmit = query => {
     navigate({
       pathname: '/movies',
       search: `?query=${query}`,
     });
-    handleSearchbarSubmit();
     setPage(1);
   };
 
@@ -93,7 +88,7 @@ function MoviesSearch() {
           <BackToTopLink firstElRef={firstElRef}></BackToTopLink>
         </>
       )}
-      {isFetched && !isLoading && results.length === 0 && (
+      {results.length === 0 && searchQuery && (
         <Box p="16px" color="white">
           Sorry, no movie found for this search query :(
         </Box>

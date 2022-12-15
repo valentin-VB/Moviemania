@@ -7,6 +7,8 @@ export const BackLink = styled(NavLink)`
   text-decoration: none;
   margin-bottom: ${p => p.theme.space[5]}px;
   color: ${p => p.theme.colors.accentText};
+  transition: font-size ${p => p.theme.transitions.tDuration}
+    ${p => p.theme.transitions.tTimingFunction};
 
   :hover {
     font-size: 28px;
@@ -39,6 +41,10 @@ export const Geners = styled.div`
   }
 `;
 
+export const IMDbLink = styled.a`
+  color: ${p => p.theme.colors.accentText};
+`;
+
 export const Heading = styled.h3`
   font-weight: ${p => p.theme.fontWeights.normal};
   color: ${p => p.theme.colors.white};
@@ -61,6 +67,10 @@ export const Button = styled.button`
     fill: ${p => p.theme.colors.text};
     width: 38px;
     height: auto;
+    transition: color ${p => p.theme.transitions.tDuration}
+        ${p => p.theme.transitions.tTimingFunction},
+      scale ${p => p.theme.transitions.tDuration}
+        ${p => p.theme.transitions.tTimingFunction};
     :hover,
     :focus {
       fill: ${p => p.theme.colors.accentText};
@@ -81,6 +91,10 @@ export const StyledLink = styled(NavLink)`
   color: ${p => p.theme.colors.text};
   margin-right: ${p => p.theme.space[4]}px;
   text-decoration: none;
+  transition: color ${p => p.theme.transitions.tDuration}
+      ${p => p.theme.transitions.tTimingFunction},
+    font-size ${p => p.theme.transitions.tDuration}
+      ${p => p.theme.transitions.tTimingFunction};
   cursor: pointer;
   :hover,
   :focus {

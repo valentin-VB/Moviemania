@@ -44,4 +44,9 @@ export const theme = {
     phone: '479px',
     pc: '480px',
   },
+
+  transitions: {
+    tDuration: '300ms',
+    tTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  },
 };

@@ -30,30 +30,39 @@ export const StyledNavLink = styled(NavLink)`
     padding-bottom: ${p => p.theme.space[5]}px;
     margin-bottom: 0px;
     color: ${p => p.theme.colors.text};
+    background-color: inherit;
+    transition: color ${p => p.theme.transitions.tDuration}
+        ${p => p.theme.transitions.tTimingFunction},
+      background-color ${p => p.theme.transitions.tDuration}
+        ${p => p.theme.transitions.tTimingFunction},
+      border ${p => p.theme.transitions.tDuration}
+        ${p => p.theme.transitions.tTimingFunction};
+  }
 
+  path {
+    stroke: ${p => p.theme.colors.text};
+    transition: stroke ${p => p.theme.transitions.tDuration}
+      ${p => p.theme.transitions.tTimingFunction};
+  }
+
+  svg {
+    width: 40px;
+  }
+
+  :hover,
+  :focus {
+    color: ${p => p.theme.colors.accentText};
     path {
-      stroke: ${p => p.theme.colors.text};
+      stroke: ${p => p.theme.colors.accentText};
     }
+  }
 
-    svg {
-      width: 40px;
-    }
-
-    :hover,
-    :focus {
-      color: ${p => p.theme.colors.accentText};
-      path {
-        stroke: ${p => p.theme.colors.accentText};
-      }
-    }
-
-    &.active {
-      background-color: ${p => p.theme.colors.accent};
-      color: ${p => p.theme.colors.accentText};
-      border-right: 8px solid ${p => p.theme.colors.accentText};
-      path {
-        stroke: ${p => p.theme.colors.accentText};
-      }
+  &.active {
+    background-color: ${p => p.theme.colors.accent};
+    color: ${p => p.theme.colors.accentText};
+    border-right: 8px solid ${p => p.theme.colors.accentText};
+    path {
+      stroke: ${p => p.theme.colors.accentText};
     }
   }
 `;

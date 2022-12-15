@@ -10,6 +10,7 @@ import {
   StyledLink,
   BackLink,
   Button,
+  IMDbLink,
 } from './MovieDetails.styled';
 import { toHoursAndMinutes } from 'Services/timeFormater';
 import Crew from 'components/Crew';
@@ -105,7 +106,9 @@ function MovieDetails() {
           <Text>{title} •</Text>
           <Text>{release_date.slice(0, 4)} •</Text>
           <Text>{toHoursAndMinutes(runtime)} •</Text>
-          <a href={`https://www.imdb.com/title/${imdb_id}/`}>IMDb</a>
+          <IMDbLink href={`https://www.imdb.com/title/${imdb_id}/`}>
+            IMDb
+          </IMDbLink>
         </Box>
         <Button
           className={isActive}

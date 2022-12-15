@@ -8,6 +8,7 @@ function BackToTopLink({ firstElRef }) {
   let option = {
     root: null,
     threshold: [0],
+    rootMargin: '100px',
   };
 
   const backToTopIntObserver = new IntersectionObserver(entries => {

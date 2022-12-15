@@ -42,7 +42,8 @@ export const Btn = styled.button`
   border: 0;
   border-radius: 30px;
   opacity: 0.6;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity ${p => p.theme.transitions.tDuration}
+    ${p => p.theme.transitions.tTimingFunction};
   cursor: pointer;
   outline: none;
 
