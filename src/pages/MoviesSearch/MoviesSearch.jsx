@@ -1,4 +1,4 @@
-import { useSearchParams, useNavigate, useLocaion } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useState, useRef, useCallback } from 'react';
 import Searchbar from 'components/Searchbar';
 import { fetchMovieByQuery } from 'Services/api';
