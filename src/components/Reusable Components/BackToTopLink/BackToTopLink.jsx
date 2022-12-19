@@ -4,7 +4,14 @@ import { Link } from './BackToTopLink..styled';
 function BackToTopLink({ inView }) {
   return (
     !inView && (
-      <Link href="#top">
+      <Link
+        onClick={() =>
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          })
+        }
+      >
         <RxDoubleArrowUp></RxDoubleArrowUp>
       </Link>
     )
