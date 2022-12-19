@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { RxDoubleArrowUp } from 'react-icons/rx';
 import { Link } from './BackToTopLink..styled';
 

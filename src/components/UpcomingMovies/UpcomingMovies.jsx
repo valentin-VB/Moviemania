@@ -1,5 +1,4 @@
 import useMovies from 'Hooks/useMovies';
-import MovieCard from 'components/MovieCard';
 import { useState, useRef, useCallback } from 'react';
 import Loader from 'components/Reusable Components/Loader';
 import { fetchUpcomingMovies } from 'Services/api';
