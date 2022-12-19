@@ -1,31 +1,31 @@
 {
   "files": {
     "main.css": "/Moviemania/static/css/main.292b0fb3.css",
-    "main.js": "/Moviemania/static/js/main.e079a283.js",
-    "static/js/304.033480e6.chunk.js": "/Moviemania/static/js/304.033480e6.chunk.js",
-    "static/js/514.42fd5869.chunk.js": "/Moviemania/static/js/514.42fd5869.chunk.js",
-    "static/js/374.bfd3f5ce.chunk.js": "/Moviemania/static/js/374.bfd3f5ce.chunk.js",
-    "static/js/58.c9985c02.chunk.js": "/Moviemania/static/js/58.c9985c02.chunk.js",
-    "static/js/796.88804c9c.chunk.js": "/Moviemania/static/js/796.88804c9c.chunk.js",
-    "static/js/274.96c34e9b.chunk.js": "/Moviemania/static/js/274.96c34e9b.chunk.js",
-    "static/js/213.c0a8a988.chunk.js": "/Moviemania/static/js/213.c0a8a988.chunk.js",
+    "main.js": "/Moviemania/static/js/main.509172b3.js",
+    "static/js/304.c81096f4.chunk.js": "/Moviemania/static/js/304.c81096f4.chunk.js",
+    "static/js/514.aeb6dfcd.chunk.js": "/Moviemania/static/js/514.aeb6dfcd.chunk.js",
+    "static/js/374.57c0fb02.chunk.js": "/Moviemania/static/js/374.57c0fb02.chunk.js",
+    "static/js/58.dcf39989.chunk.js": "/Moviemania/static/js/58.dcf39989.chunk.js",
+    "static/js/796.4eeb3ce8.chunk.js": "/Moviemania/static/js/796.4eeb3ce8.chunk.js",
+    "static/js/274.3fd2fb7b.chunk.js": "/Moviemania/static/js/274.3fd2fb7b.chunk.js",
+    "static/js/346.8ad6e825.chunk.js": "/Moviemania/static/js/346.8ad6e825.chunk.js",
     "static/js/316.e7827c78.chunk.js": "/Moviemania/static/js/316.e7827c78.chunk.js",
     "static/js/856.51f368cc.chunk.js": "/Moviemania/static/js/856.51f368cc.chunk.js",
     "index.html": "/Moviemania/index.html",
     "main.292b0fb3.css.map": "/Moviemania/static/css/main.292b0fb3.css.map",
-    "main.e079a283.js.map": "/Moviemania/static/js/main.e079a283.js.map",
-    "304.033480e6.chunk.js.map": "/Moviemania/static/js/304.033480e6.chunk.js.map",
-    "514.42fd5869.chunk.js.map": "/Moviemania/static/js/514.42fd5869.chunk.js.map",
-    "374.bfd3f5ce.chunk.js.map": "/Moviemania/static/js/374.bfd3f5ce.chunk.js.map",
-    "58.c9985c02.chunk.js.map": "/Moviemania/static/js/58.c9985c02.chunk.js.map",
-    "796.88804c9c.chunk.js.map": "/Moviemania/static/js/796.88804c9c.chunk.js.map",
-    "274.96c34e9b.chunk.js.map": "/Moviemania/static/js/274.96c34e9b.chunk.js.map",
-    "213.c0a8a988.chunk.js.map": "/Moviemania/static/js/213.c0a8a988.chunk.js.map",
+    "main.509172b3.js.map": "/Moviemania/static/js/main.509172b3.js.map",
+    "304.c81096f4.chunk.js.map": "/Moviemania/static/js/304.c81096f4.chunk.js.map",
+    "514.aeb6dfcd.chunk.js.map": "/Moviemania/static/js/514.aeb6dfcd.chunk.js.map",
+    "374.57c0fb02.chunk.js.map": "/Moviemania/static/js/374.57c0fb02.chunk.js.map",
+    "58.dcf39989.chunk.js.map": "/Moviemania/static/js/58.dcf39989.chunk.js.map",
+    "796.4eeb3ce8.chunk.js.map": "/Moviemania/static/js/796.4eeb3ce8.chunk.js.map",
+    "274.3fd2fb7b.chunk.js.map": "/Moviemania/static/js/274.3fd2fb7b.chunk.js.map",
+    "346.8ad6e825.chunk.js.map": "/Moviemania/static/js/346.8ad6e825.chunk.js.map",
     "316.e7827c78.chunk.js.map": "/Moviemania/static/js/316.e7827c78.chunk.js.map",
     "856.51f368cc.chunk.js.map": "/Moviemania/static/js/856.51f368cc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.292b0fb3.css",
-    "static/js/main.e079a283.js"
+    "static/js/main.509172b3.js"
   ]
 }
