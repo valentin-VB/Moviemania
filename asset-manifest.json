@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Moviemania/static/css/main.69ed96b8.css",
-    "main.js": "/Moviemania/static/js/main.5cf74a12.js",
+    "main.js": "/Moviemania/static/js/main.0090219a.js",
     "static/js/304.22c8ab48.chunk.js": "/Moviemania/static/js/304.22c8ab48.chunk.js",
     "static/js/514.d8e0e530.chunk.js": "/Moviemania/static/js/514.d8e0e530.chunk.js",
     "static/js/820.785ac694.chunk.js": "/Moviemania/static/js/820.785ac694.chunk.js",
@@ -13,7 +13,7 @@
     "static/js/856.51f368cc.chunk.js": "/Moviemania/static/js/856.51f368cc.chunk.js",
     "index.html": "/Moviemania/index.html",
     "main.69ed96b8.css.map": "/Moviemania/static/css/main.69ed96b8.css.map",
-    "main.5cf74a12.js.map": "/Moviemania/static/js/main.5cf74a12.js.map",
+    "main.0090219a.js.map": "/Moviemania/static/js/main.0090219a.js.map",
     "304.22c8ab48.chunk.js.map": "/Moviemania/static/js/304.22c8ab48.chunk.js.map",
     "514.d8e0e530.chunk.js.map": "/Moviemania/static/js/514.d8e0e530.chunk.js.map",
     "820.785ac694.chunk.js.map": "/Moviemania/static/js/820.785ac694.chunk.js.map",
@@ -26,6 +26,6 @@
   },
   "entrypoints": [
     "static/css/main.69ed96b8.css",
-    "static/js/main.5cf74a12.js"
+    "static/js/main.0090219a.js"
   ]
 }
