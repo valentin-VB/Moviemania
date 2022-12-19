@@ -31,7 +31,12 @@ export const App = () => {
             <Route path="reviews" element={<Reviews />}></Route>
           </Route>
           <Route path="watchlist" element={<WatchList />}></Route>
-          <Route path="*" element={<Text>Not Found</Text>} />
+          <Route
+            path="*"
+            element={
+              <Text>Ooops... The page you are looking for wasn't found</Text>
+            }
+          />
         </Route>
       </Routes>
     </>

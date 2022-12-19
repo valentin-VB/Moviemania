@@ -19,12 +19,6 @@ export const BackLink = styled(NavLink)`
   }
 `;
 
-export const Text = styled.p`
-  color: ${p => p.theme.colors.white};
-  margin-bottom: ${p => p.theme.space[4]}px;
-  font-weight: ${p => p.theme.fontWeights.normal};
-`;
-
 export const Geners = styled.div`
   margin-bottom: ${p => p.theme.space[5]}px;
   display: flex;
@@ -41,14 +35,15 @@ export const Geners = styled.div`
   }
 `;
 
-export const IMDbLink = styled.a`
-  color: ${p => p.theme.colors.accentText};
-`;
-
 export const Heading = styled.h3`
   font-weight: ${p => p.theme.fontWeights.normal};
   color: ${p => p.theme.colors.white};
   margin-bottom: ${p => p.theme.space[4]}px;
+`;
+
+export const Text = styled.p`
+  color: ${p => p.theme.colors.white};
+  font-weight: ${p => p.theme.fontWeights.normal};
 `;
 
 export const Button = styled.button`
@@ -59,10 +54,22 @@ export const Button = styled.button`
   cursor: pointer;
   font-family: inherit;
   font-size: ${p => p.theme.fontSizes.m};
-  font-weight: ${p => p.theme.fontWeights.extraBold};
+  font-weight: ${p => p.theme.fontWeights.bold};
   color: ${p => p.theme.colors.text};
   transition: color ${p => p.theme.transitions.tDuration}
     ${p => p.theme.transitions.tTimingFunction};
+
+  svg {
+    fill: ${p => p.theme.colors.text};
+    margin-left: ${p => p.theme.space[2]}px;
+    width: 38px;
+    height: auto;
+    transition: scale ${p => p.theme.transitions.tDuration}
+        ${p => p.theme.transitions.tTimingFunction},
+      fill ${p => p.theme.transitions.tDuration}
+        ${p => p.theme.transitions.tTimingFunction};
+  }
+
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
     :hover {
       color: ${p => p.theme.colors.accentText};
@@ -79,17 +86,6 @@ export const Button = styled.button`
       scale: 1.07;
     }
     color: ${p => p.theme.colors.accentText};
-  }
-
-  svg {
-    fill: ${p => p.theme.colors.text};
-    margin-left: ${p => p.theme.space[4]}px;
-    width: 38px;
-    height: auto;
-    transition: scale ${p => p.theme.transitions.tDuration}
-        ${p => p.theme.transitions.tTimingFunction},
-      fill ${p => p.theme.transitions.tDuration}
-        ${p => p.theme.transitions.tTimingFunction};
   }
 `;
 

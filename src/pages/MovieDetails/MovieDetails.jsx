@@ -10,14 +10,13 @@ import {
   StyledLink,
   BackLink,
   Button,
-  IMDbLink,
 } from './MovieDetails.styled';
-import { toHoursAndMinutes } from 'Services/timeFormater';
 import Crew from 'components/Crew';
 import Trailer from 'components/Trailer';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import { BsBookmarkFill } from 'react-icons/bs';
 import { LocalStorageManager } from 'Services/localStorage';
+import MovieInfo from 'components/MovieInfo';
 
 const localStorageManager = new LocalStorageManager();
 
@@ -95,20 +94,19 @@ function MovieDetails() {
         Back to Movies
       </BackLink>
       <Trailer videos={videos.results} title={title}></Trailer>
-      <Box display="flex" justifyContent="space-between">
-        <Box
-          display="inline-grid"
-          gridGap="6px"
-          gridTemplateColumns="auto auto auto auto"
-          width="max-content"
-        >
-          <Text>{title} •</Text>
-          <Text>{release_date.slice(0, 4)} •</Text>
-          <Text>{toHoursAndMinutes(runtime)} •</Text>
-          <IMDbLink href={`https://www.imdb.com/title/${imdb_id}/`}>
-            IMDb
-          </IMDbLink>
-        </Box>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alingItems="center"
+        mb="16px"
+      >
+        <MovieInfo
+          title={title}
+          release_date={release_date}
+          runtime={runtime}
+          imdb_id={imdb_id}
+        ></MovieInfo>
+
         <Button
           className={isActive}
           onClick={() => {
@@ -116,7 +114,7 @@ function MovieDetails() {
             setIsActive(localStorageManager.isAddedToWatchList(id));
           }}
         >
-          {isActive ? 'Remove from WatchList' : 'Add Watchlist'}
+          {isActive ? 'Remove from WatchList' : 'Add to Watchlist'}
           <BsBookmarkFill />
         </Button>
       </Box>
