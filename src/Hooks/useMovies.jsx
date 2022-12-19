@@ -3,7 +3,7 @@ import { fetchConfig } from 'Services/api';
 
 const useMovies = (page = 1, fetchMovies, searchQuery) => {
   const [results, setResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(false);
   const [config, setConfig] = useState(null);
   const [error, setError] = useState(null);

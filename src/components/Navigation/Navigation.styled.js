@@ -37,12 +37,12 @@ export const StyledNavLink = styled(NavLink)`
         ${p => p.theme.transitions.tTimingFunction},
       border ${p => p.theme.transitions.tDuration}
         ${p => p.theme.transitions.tTimingFunction};
-  }
 
-  path {
-    stroke: ${p => p.theme.colors.text};
-    transition: stroke ${p => p.theme.transitions.tDuration}
-      ${p => p.theme.transitions.tTimingFunction};
+    path {
+      stroke: ${p => p.theme.colors.text};
+      transition: stroke ${p => p.theme.transitions.tDuration}
+        ${p => p.theme.transitions.tTimingFunction};
+    }
   }
 
   svg {

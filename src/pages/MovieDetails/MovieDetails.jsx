@@ -23,24 +23,21 @@ const localStorageManager = new LocalStorageManager();
 
 function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
-  console.log('movieDetails', movieDetails);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [config, setConfig] = useState(null);
-  const [isActive, setisActive] = useState(null);
+  const [isActive, setIsActive] = useState(null);
   const { movieId } = useParams();
 
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/home/trending';
 
   useEffect(() => {
-    setLoading(true);
-
+    setIsLoading(true);
     const fetchData = async () => {
       try {
         const movieDetails = await fetchMovieDetails(movieId);
         setMovieDetails(movieDetails);
-        setLoading(false);
-        setisActive(localStorageManager.isAddedToWatchList(movieDetails.id));
+        setIsActive(localStorageManager.isAddedToWatchList(movieDetails.id));
       } catch (error) {
         console.warn(error);
         setMovieDetails('error');
@@ -52,6 +49,8 @@ function MovieDetails() {
       } catch (error) {
         console.warn(error);
       }
+
+      setIsLoading(false);
     };
 
     fetchData();
@@ -90,7 +89,7 @@ function MovieDetails() {
 
   return (
     <>
-      {loading && <Loader></Loader>}
+      {isLoading && <Loader></Loader>}
       <BackLink to={backLinkHref}>
         <MdArrowBackIosNew></MdArrowBackIosNew>
         Back to Movies
@@ -114,9 +113,10 @@ function MovieDetails() {
           className={isActive}
           onClick={() => {
             localStorageManager.toogleMovies(id);
-            setisActive(localStorageManager.isAddedToWatchList(id));
+            setIsActive(localStorageManager.isAddedToWatchList(id));
           }}
         >
+          {isActive ? 'Remove from WatchList' : 'Add Watchlist'}
           <BsBookmarkFill />
         </Button>
       </Box>

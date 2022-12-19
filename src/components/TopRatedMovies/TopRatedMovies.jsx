@@ -1,5 +1,4 @@
 import useMovies from 'Hooks/useMovies';
-import MovieCard from 'components/MovieCard';
 import { useState, useRef, useCallback } from 'react';
 import Loader from 'components/Reusable Components/Loader';
 import { fetchTopRatedMovies } from 'Services/api';
@@ -7,6 +6,8 @@ import { List } from 'components/MovieCard/MovieCard.styled';
 import BackToTopLink from 'components/Reusable Components/BackToTopLink';
 import { Box } from 'components/Reusable Components/Box';
 import { intObserverManager } from 'Services/infiniteScroll';
+import ListContent from 'components/ListContent';
+import { useInView } from 'react-intersection-observer';
 
 const TopRatedMovies = () => {
   const [page, setPage] = useState(1);
@@ -15,12 +16,15 @@ const TopRatedMovies = () => {
     fetchTopRatedMovies
   );
 
+  const { ref, inView } = useInView({
+    rootMargin: '200px',
+    threshold: 0,
+  });
+
+  const intObserver = useRef();
   const addPage = () => {
     setPage(prev => prev + 1);
   };
-  const intObserver = useRef();
-  const firstElRef = useRef();
-
   const lastMovieRef = useCallback(
     movieCard => {
       const params = {
@@ -35,31 +39,6 @@ const TopRatedMovies = () => {
     [isLoading, hasNextPage]
   );
 
-  const content = results.map((movie, i) => {
-    if (results.length === i + 1) {
-      return (
-        <MovieCard
-          ref={lastMovieRef}
-          key={movie.id}
-          movie={movie}
-          config={config}
-        ></MovieCard>
-      );
-    }
-
-    if (i === 1) {
-      return (
-        <MovieCard
-          ref={firstElRef}
-          key={movie.id}
-          movie={movie}
-          config={config}
-        ></MovieCard>
-      );
-    }
-    return <MovieCard key={movie.id} movie={movie} config={config}></MovieCard>;
-  });
-
   return (
     <>
       {error && (
@@ -69,8 +48,15 @@ const TopRatedMovies = () => {
       )}
       {results.length > 0 && (
         <>
-          <List>{content}</List>
-          <BackToTopLink firstElRef={firstElRef}></BackToTopLink>
+          <List>
+            <ListContent
+              results={results}
+              config={config}
+              lastMovieRef={lastMovieRef}
+              elRef={ref}
+            />
+          </List>
+          <BackToTopLink inView={inView}></BackToTopLink>
         </>
       )}
 

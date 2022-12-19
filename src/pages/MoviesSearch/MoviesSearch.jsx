@@ -5,10 +5,11 @@ import { fetchMovieByQuery } from 'Services/api';
 import Loader from 'components/Reusable Components/Loader';
 import useMovies from 'Hooks/useMovies';
 import { List } from 'components/MovieCard/MovieCard.styled';
-import MovieCard from 'components/MovieCard';
 import { Box } from 'components/Reusable Components/Box';
+import { useInView } from 'react-intersection-observer';
 import BackToTopLink from 'components/Reusable Components/BackToTopLink';
 import { intObserverManager } from 'Services/infiniteScroll';
+import ListContent from 'components/ListContent';
 
 function MoviesSearch() {
   const [searchParams] = useSearchParams();
@@ -33,9 +34,8 @@ function MoviesSearch() {
   const addPage = () => {
     setPage(prev => prev + 1);
   };
-  const intObserver = useRef();
-  const firstElRef = useRef();
 
+  const intObserver = useRef();
   const lastMovieRef = useCallback(
     movieCard => {
       const params = {
@@ -45,33 +45,15 @@ function MoviesSearch() {
         addPage,
         intObserver,
       };
+
       intObserverManager(params);
     },
     [isLoading, hasNextPage]
   );
 
-  const content = results.map((movie, i) => {
-    if (results.length === i + 1) {
-      return (
-        <MovieCard
-          ref={lastMovieRef}
-          key={movie.id}
-          movie={movie}
-          config={config}
-        ></MovieCard>
-      );
-    }
-    if (i === 1) {
-      return (
-        <MovieCard
-          ref={firstElRef}
-          key={movie.id}
-          movie={movie}
-          config={config}
-        ></MovieCard>
-      );
-    }
-    return <MovieCard key={movie.id} movie={movie} config={config}></MovieCard>;
+  const { ref, inView } = useInView({
+    rootMargin: '200px',
+    threshold: 0,
   });
 
   return (
@@ -82,18 +64,28 @@ function MoviesSearch() {
           Whoops, something went wrong: {error.message}
         </Box>
       )}
+      {isLoading && <Loader></Loader>}
       {results.length > 0 && (
         <>
-          <List>{content}</List>
-          <BackToTopLink firstElRef={firstElRef}></BackToTopLink>
+          <List>
+            <ListContent
+              results={results}
+              config={config}
+              lastMovieRef={lastMovieRef}
+              elRef={ref}
+            />
+          </List>
+          <BackToTopLink inView={inView}></BackToTopLink>
         </>
       )}
-      {results.length === 0 && searchQuery && (
-        <Box p="16px" color="white">
-          Sorry, no movie found for this search query :(
-        </Box>
-      )}
-      {isLoading && <Loader></Loader>}
+      {results.length === 0 &&
+        searchQuery &&
+        isLoading !== null &&
+        isLoading !== true && (
+          <Box p="16px" color="white">
+            Sorry, no movie found for this search query :(
+          </Box>
+        )}
     </>
   );
 }

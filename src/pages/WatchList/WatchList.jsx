@@ -1,5 +1,6 @@
-import MovieCard from 'components/MovieCard';
+import ListContent from 'components/ListContent';
 import { List } from 'components/MovieCard/MovieCard.styled';
+import { Box } from 'components/Reusable Components/Box';
 import Loader from 'components/Reusable Components/Loader';
 import { useState, useEffect } from 'react';
 import { fetchMovieDetails, fetchConfig } from 'Services/api';
@@ -10,14 +11,14 @@ const localStorageManager = new LocalStorageManager();
 export function WatchList() {
   const [movies, setMovies] = useState([]);
   const [config, setConfig] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setIsLoading(true);
     const savedIds = localStorageManager.getMovies();
     const fetchData = async () => {
       const result = [];
-      setIsLoading(true);
       savedIds.map(async id => {
         try {
           const movieInfo = await fetchMovieDetails(id);
@@ -25,8 +26,6 @@ export function WatchList() {
         } catch (error) {
           console.warn(error);
           setError(error);
-        } finally {
-          setIsLoading(false);
         }
       });
 
@@ -36,10 +35,7 @@ export function WatchList() {
       } catch (error) {
         console.warn(error);
         setError(error);
-      } finally {
-        setIsLoading(false);
       }
-
       setMovies(result);
       setIsLoading(false);
     };
@@ -47,15 +43,20 @@ export function WatchList() {
     fetchData();
   }, []);
 
-  const content = movies.map(movie => (
-    <MovieCard key={movie.id} movie={movie} config={config}></MovieCard>
-  ));
-
   return (
     <>
       {error && <p>Whoops, something went wrong: {error.message}</p>}
-      {movies.length > 0 && <List>{content}</List>}
       {isLoading && <Loader></Loader>}
+      {movies.length > 0 && (
+        <List>
+          <ListContent results={movies} config={config} />
+        </List>
+      )}
+      {isLoading !== null && isLoading !== true && movies.length === 0 && (
+        <Box p="16px" color="white">
+          No movies have been added to the watchlist yet
+        </Box>
+      )}
     </>
   );
 }

@@ -43,12 +43,11 @@ export const MovieInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: 22px;
   background-color: rgba(232, 232, 232, 0.15);
   backdrop-filter: blur(2.5px);
-  border-radius: 0px 0px 0px 50px;
+  border-radius: 0px 20px 0px 50px;
   width: 30%;
   height: 10%;
   right: 0;

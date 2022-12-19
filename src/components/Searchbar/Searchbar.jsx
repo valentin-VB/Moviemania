@@ -4,15 +4,12 @@ import { TbSearch } from 'react-icons/tb';
 import { Box } from 'components/Reusable Components/Box';
 
 const Searchbar = ({ onSubmit }) => {
-  const { register, handleSubmit, reset } = useForm();
-
+  const { register, handleSubmit } = useForm();
   const handleSearchSubmit = data => {
     if (data.searchQuery.trim() === '') {
       return;
     }
-
     onSubmit(data.searchQuery);
-    reset();
   };
 
   return (

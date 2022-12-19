@@ -52,30 +52,44 @@ export const Heading = styled.h3`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
   background-color: #191919;
   border: none;
   cursor: pointer;
+  font-family: inherit;
+  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${p => p.theme.fontWeights.extraBold};
+  color: ${p => p.theme.colors.text};
+  transition: color ${p => p.theme.transitions.tDuration}
+    ${p => p.theme.transitions.tTimingFunction};
+  @media screen and (min-width: ${p => p.theme.sizes.pc}) {
+    :hover {
+      color: ${p => p.theme.colors.accentText};
+      svg {
+        fill: ${p => p.theme.colors.accentText};
+        scale: 1.07;
+      }
+    }
+  }
 
   &.active {
     svg {
       fill: ${p => p.theme.colors.accentText};
       scale: 1.07;
     }
+    color: ${p => p.theme.colors.accentText};
   }
 
   svg {
     fill: ${p => p.theme.colors.text};
+    margin-left: ${p => p.theme.space[4]}px;
     width: 38px;
     height: auto;
-    transition: color ${p => p.theme.transitions.tDuration}
+    transition: scale ${p => p.theme.transitions.tDuration}
         ${p => p.theme.transitions.tTimingFunction},
-      scale ${p => p.theme.transitions.tDuration}
+      fill ${p => p.theme.transitions.tDuration}
         ${p => p.theme.transitions.tTimingFunction};
-    :hover,
-    :focus {
-      fill: ${p => p.theme.colors.accentText};
-      scale: 1.07;
-    }
   }
 `;
 
