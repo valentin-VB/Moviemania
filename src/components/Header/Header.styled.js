@@ -57,6 +57,8 @@ export const MenuIcon = styled(GiHamburgerMenu)`
   display: none;
   @media screen and (max-width: ${p => p.theme.sizes.phone}) {
     display: block;
+    width: 33px;
+    height: auto;
     fill: ${p => p.theme.colors.accentText};
     padding-right: ${p => p.theme.space[3]}px;
   }
