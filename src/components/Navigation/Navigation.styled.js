@@ -19,8 +19,20 @@ export const StyledNavLink = styled(NavLink)`
     margin-right: ${p => p.theme.space[4]}px;
   }
 
+  svg {
+    width: 40px;
+  }
+
   path {
     stroke: ${p => p.theme.colors.accentText};
+  }
+
+  :hover,
+  :focus {
+    color: ${p => p.theme.colors.accentText};
+    path {
+      stroke: ${p => p.theme.colors.accentText};
+    }
   }
 
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
@@ -43,21 +55,8 @@ export const StyledNavLink = styled(NavLink)`
       transition: stroke ${p => p.theme.transitions.tDuration}
         ${p => p.theme.transitions.tTimingFunction};
     }
-  }
 
-  svg {
-    width: 40px;
-  }
-
-  :hover,
-  :focus {
-    color: ${p => p.theme.colors.accentText};
-    path {
-      stroke: ${p => p.theme.colors.accentText};
-    }
-  }
-
-  &.active {
+    &.active {
     background-color: ${p => p.theme.colors.accent};
     color: ${p => p.theme.colors.accentText};
     border-right: 8px solid ${p => p.theme.colors.accentText};
@@ -65,4 +64,10 @@ export const StyledNavLink = styled(NavLink)`
       stroke: ${p => p.theme.colors.accentText};
     }
   }
+
+     
+
+ 
+
+  
 `;

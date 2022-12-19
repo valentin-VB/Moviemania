@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { NavLink } from 'react-router-dom';
 
 export const PageHeader = styled.header`
   display: flex;
@@ -14,8 +15,9 @@ export const PageHeader = styled.header`
   }
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(NavLink)`
   display: block;
+  text-decoration: none;
   font-family: ${p => p.theme.fonts.heading};
   font-size: ${p => p.theme.fontSizes.l};
   color: ${p => p.theme.colors.accentText};

@@ -17,7 +17,7 @@ function Header() {
 
   return (
     <PageHeader>
-      <Logo>Moviemania</Logo>
+      <Logo to="/home/trending">Moviemania</Logo>
       {isOpen && (
         <MobileMenu>
           <Navigation closeMenu={closeMenu}></Navigation>
