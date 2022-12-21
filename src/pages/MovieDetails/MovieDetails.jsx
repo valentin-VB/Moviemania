@@ -93,6 +93,7 @@ function MovieDetails() {
         <MdArrowBackIosNew></MdArrowBackIosNew>
         Back to Movies
       </BackLink>
+      <Heading>{title}</Heading>
       <Trailer videos={videos.results} title={title}></Trailer>
       <Box
         display="flex"
@@ -101,17 +102,16 @@ function MovieDetails() {
         mb="16px"
       >
         <MovieInfo
-          title={title}
           release_date={release_date}
           runtime={runtime}
           imdb_id={imdb_id}
         ></MovieInfo>
 
         <Button
-          className={isActive}
+          className={isActive ? 'active' : null}
           onClick={() => {
-            localStorageManager.toogleMovies(id);
-            setIsActive(localStorageManager.isAddedToWatchList(id));
+            const isActive = localStorageManager.toogleMovies(id);
+            setIsActive(isActive);
           }}
         >
           {isActive ? 'Remove from WatchList' : 'Add to Watchlist'}

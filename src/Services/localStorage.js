@@ -4,16 +4,18 @@ export class LocalStorageManager {
   }
 
   toogleMovies(id) {
-    console.log('до', this.ids);
-    if (this.ids.includes(id)) {
-      const idIndex = this.ids.indexOf(id);
-      console.log('idIndex', idIndex);
-      this.ids.splice(idIndex, 1);
-    } else {
+    const idIndex = this.ids.indexOf(id);
+    const notInList = idIndex === -1;
+
+    if (notInList) {
       this.ids.push(id);
+    } else {
+      this.ids.splice(idIndex, 1);
     }
-    console.log('після', this.ids);
+
     localStorage.setItem('movieIds', JSON.stringify(this.ids));
+
+    return !notInList;
   }
 
   getMovies() {
@@ -26,10 +28,6 @@ export class LocalStorageManager {
   }
 
   isAddedToWatchList(id) {
-    if (this.ids.includes(id)) {
-      return 'active';
-    }
-
-    return null;
+    return this.ids.includes(id);
   }
 }

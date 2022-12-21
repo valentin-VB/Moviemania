@@ -24,6 +24,7 @@ export const Input = styled.input`
   border: none;
   outline: none;
   padding-left: ${p => p.theme.space[5]}px;
+  padding-right: 75px;
   padding-top: ${p => p.theme.space[4]}px;
   padding-bottom: ${p => p.theme.space[4]}px;
   ::placeholder {

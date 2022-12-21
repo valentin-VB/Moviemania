@@ -2,7 +2,7 @@ import { Box } from 'components/Reusable Components/Box';
 import { toHoursAndMinutes } from 'Services/timeFormater';
 import { IMDbLink, Text } from './MovieInfo,styled';
 
-function MovieInfo({ title, release_date, runtime, imdb_id }) {
+function MovieInfo({ release_date, runtime, imdb_id }) {
   return (
     <Box
       display="inline-grid"
@@ -10,9 +10,6 @@ function MovieInfo({ title, release_date, runtime, imdb_id }) {
       gridTemplateColumns="auto auto auto auto"
       alignItems="center"
     >
-      <Text>
-        {title} <span>&nbsp;•</span>
-      </Text>
       <Text>
         {release_date.slice(0, 4)} <span>&nbsp;•</span>
       </Text>
