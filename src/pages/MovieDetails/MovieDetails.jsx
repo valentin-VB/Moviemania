@@ -32,11 +32,12 @@ function MovieDetails() {
 
   useEffect(() => {
     setIsLoading(true);
+    setIsActive(localStorageManager.isAddedToWatchList(movieId));
+
     const fetchData = async () => {
       try {
         const movieDetails = await fetchMovieDetails(movieId);
         setMovieDetails(movieDetails);
-        setIsActive(localStorageManager.isAddedToWatchList(movieDetails.id));
       } catch (error) {
         console.warn(error);
         setMovieDetails('error');
@@ -109,8 +110,10 @@ function MovieDetails() {
 
         <Button
           className={isActive ? 'active' : null}
-          onClick={() => {
-            const isActive = localStorageManager.toogleMovies(id);
+          onClick={e => {
+            console.log(e);
+            localStorageManager.toogleMovies(id);
+            const isActive = localStorageManager.isAddedToWatchList(id);
             setIsActive(isActive);
           }}
         >

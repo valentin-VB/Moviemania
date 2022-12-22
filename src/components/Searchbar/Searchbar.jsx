@@ -32,7 +32,6 @@ const Searchbar = ({ onSubmit }) => {
           {...register('searchQuery')}
           type="text"
           autoComplete="off"
-          autoFocus
           placeholder="Search for movies"
         ></Input>
         <Btn>

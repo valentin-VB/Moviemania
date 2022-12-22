@@ -70,6 +70,15 @@ export const Button = styled.button`
         ${p => p.theme.transitions.tTimingFunction};
   }
 
+  &.active {
+    color: ${p => p.theme.colors.accentText};
+
+    svg {
+      fill: ${p => p.theme.colors.accentText};
+      scale: 1.07;
+    }
+  }
+
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
     :hover {
       color: ${p => p.theme.colors.accentText};
@@ -78,14 +87,6 @@ export const Button = styled.button`
         scale: 1.07;
       }
     }
-  }
-
-  &.active {
-    svg {
-      fill: ${p => p.theme.colors.accentText};
-      scale: 1.07;
-    }
-    color: ${p => p.theme.colors.accentText};
   }
 `;
 

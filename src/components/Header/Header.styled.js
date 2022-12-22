@@ -21,7 +21,7 @@ export const Logo = styled(NavLink)`
   font-family: ${p => p.theme.fonts.heading};
   font-size: ${p => p.theme.fontSizes.l};
   color: ${p => p.theme.colors.accentText};
-  padding-left: ${p => p.theme.space[4]}px;
+  padding-left: ${p => p.theme.space[5]}px;
   cursor: pointer;
   @media screen and (min-width: ${p => p.theme.sizes.pc}) {
     margin-bottom: ${p => p.theme.space[6]}px;
@@ -60,6 +60,6 @@ export const MenuIcon = styled(GiHamburgerMenu)`
     width: 33px;
     height: auto;
     fill: ${p => p.theme.colors.accentText};
-    padding-right: ${p => p.theme.space[3]}px;
+    padding-right: ${p => p.theme.space[4]}px;
   }
 `;

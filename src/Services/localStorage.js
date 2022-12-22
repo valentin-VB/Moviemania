@@ -15,7 +15,7 @@ export class LocalStorageManager {
 
     localStorage.setItem('movieIds', JSON.stringify(this.ids));
 
-    return !notInList;
+    // return !notInList;
   }
 
   getMovies() {
@@ -28,6 +28,6 @@ export class LocalStorageManager {
   }
 
   isAddedToWatchList(id) {
-    return this.ids.includes(id);
+    return this.ids.includes(Number(id));
   }
 }
