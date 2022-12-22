@@ -119,9 +119,9 @@ function MovieDetails() {
         </Button>
       </Box>
       <Geners>
-        {genres.map(genr => (
-          <span key={genr.id}>{genr.name}</span>
-        ))}
+        {genres.map(
+          (genr, i) => i < 3 && <span key={genr.id}>{genr.name}</span>
+        )}
       </Geners>
       <Heading>Overview</Heading>
       <Text>{overview}</Text>
